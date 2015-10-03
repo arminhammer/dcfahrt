@@ -9,5 +9,5 @@ module.exports.run = function(event, context, cb) {
 
 // Your Code
 var action = function() {
-  return {message: 'Your JAWS lambda executed successfully!'};
+
 };

@@ -7,13 +7,25 @@
  */
 
 require('jaws-core-js/env');
+var https = require('https');
 
 // Modularized Code
-var action = require('./index.js');
+//var action = require('./index.js');
 
 // Lambda Handler
 module.exports.handler = function(event, context) {
-  action.run(event, context, function(error, result) {
-    return context.done(error, result);
-  });
+
+    var options = {
+        hostname: 'api.wmata.com',
+        path: '/StationPrediction.svc/json/GetPrediction/All',
+        headers: {
+            api_key: process.env['WMATA_API_KEY']
+        }
+    };
+
+    https.get(options, function(res) {
+        context.succeed(res.statusCode);
+    }).on('error', function(e) {
+        return context.fail(e);
+    });
 };

@@ -11,7 +11,8 @@
         "region": "us-east-1",
         "iamRoleArnLambda": "arn:aws:iam::342100979030:role/dev-dcfahrt-r-IamRoleLambda-1QQK7YJRHNP6W",
         "iamRoleArnApiGateway": "arn:aws:iam::342100979030:role/dev-dcfahrt-r-IamRoleApiGateway-1HR3Z3B6Z1IW3",
-        "jawsBucket": "jaws.dev.useast1.dcfahrt.com"
+        "jawsBucket": "jaws.dev.useast1.dcfahrt.com",
+        "restApiId": "wuo4g1h85g"
       }
     ]
   }

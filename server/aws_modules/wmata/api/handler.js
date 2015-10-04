@@ -25,7 +25,6 @@ module.exports.handler = function(event, context) {
     };
 
     https.get(options, function(res) {
-        console.log(res.data);
         var body = '';
         res.on('data', function(chunk) {
             body += chunk;
@@ -36,6 +35,7 @@ module.exports.handler = function(event, context) {
             var params = {
                 Bucket: process.env['S3_CACHE_BUCKET'],
                 Key: 'dcrailprediction.json',
+                ACL: 'public-read',
                 Body: body
             };
 

@@ -7,6 +7,7 @@
  */
 
 require('jaws-core-js/env');
+var AWS = require('aws-sdk');
 var https = require('https');
 
 // Modularized Code
@@ -30,8 +31,20 @@ module.exports.handler = function(event, context) {
             body += chunk;
         });
         res.on('end', function() {
-            var json = JSON.parse(body);
-            context.succeed(json);
+            var s3 = new AWS.S3();
+
+            var params = {
+                Bucket: process.env['S3_CACHE_BUCKET'],
+                Key: 'dcrailprediction.json',
+                Body: body
+            };
+
+            s3.putObject(params, function(err, s3Data) {
+               if(err) context.fail(err);
+                else {
+                   context.succeed('Uploaded to S3.');
+               }
+            });
         });
     }).on('error', function(e) {
         return context.fail(e);

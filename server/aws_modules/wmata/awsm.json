@@ -6,7 +6,23 @@
   "description": "",
   "resources": {
     "cloudFormation": {
-      "LambdaIamPolicyDocumentStatements": [],
+      "LambdaIamPolicyDocumentStatements": [
+        {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Sid": "Stmt1443965090000",
+              "Effect": "Allow",
+              "Action": [
+                "s3:PutObject"
+              ],
+              "Resource": [
+                "arn:aws:s3:::cache.dcfahrt.com/*"
+              ]
+            }
+          ]
+        }
+      ],
       "ApiGatewayIamPolicyDocumentStatements": [],
       "Resources": {
         "DCFahrtCacheBucket": {

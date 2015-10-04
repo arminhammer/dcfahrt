@@ -24,7 +24,15 @@ module.exports.handler = function(event, context) {
     };
 
     https.get(options, function(res) {
-        context.succeed(res.statusCode);
+        console.log(res.data);
+        var body = '';
+        res.on('data', function(chunk) {
+            body += chunk;
+        });
+        res.on('end', function() {
+            var json = JSON.parse(body);
+            context.succeed(json);
+        });
     }).on('error', function(e) {
         return context.fail(e);
     });

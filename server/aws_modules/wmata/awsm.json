@@ -8,7 +8,18 @@
     "cloudFormation": {
       "LambdaIamPolicyDocumentStatements": [],
       "ApiGatewayIamPolicyDocumentStatements": [],
-      "Resources": {}
+      "Resources": {
+        "DCFahrtCacheBucket": {
+          "Type": "AWS::S3::Bucket",
+          "Properties": {
+            "AccessControl": "Private",
+            "BucketName": {
+              "Ref": "CacheBucket"
+            }
+          },
+          "DeletionPolicy": "Retain"
+        }
+      }
     }
   }
 }

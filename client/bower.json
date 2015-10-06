@@ -6,7 +6,9 @@
     "modernizr": "~2.8.1",
     "mithril": "~0.2.0",
     "pixi.js": "~3.0.7",
-    "aws-sdk": "aws-sdk-js#~2.2.6"
+    "aws-sdk": "aws-sdk-js#~2.2.6",
+    "stats.js": "*",
+    "tween.js": "tweenjs#~16.3.1"
   },
   "overrides": {
     "bootstrap": {

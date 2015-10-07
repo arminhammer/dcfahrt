@@ -35,6 +35,22 @@ var MapManager = function() {
   //$('#mapContainer').height('100%');
   //$('#mapContainer').width('100%');
 
+  self.resizeMap = function() {
+    console.log('Resizing...');
+    var aspectRatio = 7/6;
+    var width = window.innerWidth*0.9;
+    var height = width / aspectRatio;
+    self.winDimension = { x: width, y: height };
+
+    if(self.renderer) {
+      self.renderer.view.style.width = self.winDimension.x+'px';
+      self.renderer.view.style.height = self.winDimension.y+'px';
+    }
+  };
+
+  window.addEventListener('resize', self.resizeMap, false);
+  window.addEventListener('orientationchange', self.resizeMap, false);
+
   var width = window.innerWidth*0.9;
   var aspectRatio = 7/6;
   var height = width / aspectRatio;

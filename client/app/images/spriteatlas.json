@@ -1,0 +1,21 @@
+{"frames": {
+
+"arlingtoncemetery.png":
+{
+	"frame": {"x":2,"y":2,"w":578,"h":574},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":578,"h":574},
+	"sourceSize": {"w":578,"h":574},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "http://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "spriteatlas.png",
+	"format": "RGBA8888",
+	"size": {"w":582,"h":578},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:c84936952366f821e0064203ea02fe1b:57c89221cf725727db695e4934669031:1fd55e2fd82dd1a0f07657f786644695$"
+}
+}

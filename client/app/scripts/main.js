@@ -26,39 +26,40 @@ var MapManager = function() {
   mbStats.domElement.style.top = '50px';
   document.body.appendChild( mbStats.domElement );
 
+  var origMapSize = { x: 3400, y: 3800 };
+
   fps = 60;
   var now;
   var then = Date.now();
   var interval = 1000/fps;
   var delta;
 
-  //$('#mapContainer').height('100%');
-  //$('#mapContainer').width('100%');
-
   self.resizeMap = function() {
     console.log('Resizing...');
     var aspectRatio = 7/6;
-    var width = window.innerWidth*0.9;
-    var height = width / aspectRatio;
-    self.winDimension = { x: width, y: height };
+    self.width = window.innerWidth*0.9;
+    self.height = self.width / aspectRatio;
+    self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
+    console.log('scale:');
+    console.log(self.scale);
 
     if(self.renderer) {
-      self.renderer.view.style.width = self.winDimension.x+'px';
-      self.renderer.view.style.height = self.winDimension.y+'px';
+      self.renderer.view.style.width = self.width+'px';
+      self.renderer.view.style.height = self.height+'px';
     }
   };
 
   window.addEventListener('resize', self.resizeMap, false);
   window.addEventListener('orientationchange', self.resizeMap, false);
 
-  var width = window.innerWidth*0.9;
+  self.width = window.innerWidth*0.9;
   var aspectRatio = 7/6;
-  var height = width / aspectRatio;
-  self.winDimension = { x: width, y: height };
+  self.height = self.width / aspectRatio;
+  self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
+  console.log('scale:');
+  console.log(self.scale);
 
-  console.log(self.winDimension);
-
-  self.renderer = PIXI.autoDetectRenderer(self.winDimension.x, self.winDimension.y, {backgroundColor : 0xFFFFFF});
+  self.renderer = PIXI.autoDetectRenderer(self.width, self.height, {backgroundColor : 0xFFFFFF});
 
   self.stage = new PIXI.Container();
   self.stage.name = 'stage';
@@ -106,12 +107,17 @@ var MapManager = function() {
 
   self.onLoaded = function() {
     console.log('Assets loaded');
+    var arlCemetery = new PIXI.Sprite();
+    arlCemetery.texture = PIXI.Texture.fromFrame('arlingtoncemetery.png');
+    arlCemetery.scale.x = self.scale.x;
+    arlCemetery.scale.y = self.scale.y;
+    self.stage.addChild(arlCemetery);
   };
 
   self.init = function() {
-    //PIXI.loader
-    //.add('../resources/sprites/sprites.json')
-    //.load(self.onLoaded);
+    PIXI.loader
+    .add('../images/spriteatlas.json')
+    .load(self.onLoaded);
   };
 
 };
@@ -143,6 +149,7 @@ var DCMap = {
 
     var MANAGER = new MapManager();
     console.log(MANAGER);
+    MANAGER.init();
 
     return {
       drawMap: function (element, isInitialized, context) {

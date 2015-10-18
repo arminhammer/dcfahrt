@@ -34,6 +34,11 @@ var MapManager = function() {
   var interval = 1000/fps;
   var delta;
 
+  self.sprites = {
+    'arlingtoncemetery.png': { pos: {x:500,y:500}},
+    'rooseveltisland.png' : {pos: {x:0,y:0}}
+  };
+
   self.resizeMap = function() {
     console.log('Resizing...');
     var aspectRatio = 7/6;
@@ -105,13 +110,21 @@ var MapManager = function() {
     requestAnimationFrame(self.animate);
   };
 
+  self.addSprites = function() {
+    _.forEach(self.sprites, function(s, key) {
+      s.sprite = new PIXI.Sprite();
+      s.sprite.texture = PIXI.Texture.fromFrame(key);
+      s.sprite.scale.x = self.scale.x;
+      s.sprite.scale.y = self.scale.y;
+      s.sprite.anchor = new PIXI.Point(0.5, 0.5);
+      s.sprite.position = new PIXI.Point(s.pos.x, s.pos.y);
+      self.stage.addChild(s.sprite);
+    })
+  };
+
   self.onLoaded = function() {
     console.log('Assets loaded');
-    var arlCemetery = new PIXI.Sprite();
-    arlCemetery.texture = PIXI.Texture.fromFrame('arlingtoncemetery.png');
-    arlCemetery.scale.x = self.scale.x;
-    arlCemetery.scale.y = self.scale.y;
-    self.stage.addChild(arlCemetery);
+    self.addSprites();
   };
 
   self.init = function() {

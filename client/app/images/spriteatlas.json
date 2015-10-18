@@ -17,14 +17,41 @@
 	"spriteSourceSize": {"x":0,"y":0,"w":95,"h":96},
 	"sourceSize": {"w":95,"h":96},
 	"pivot": {"x":0.5,"y":0.5}
+},
+"waterbottom.png":
+{
+	"frame": {"x":679,"y":2,"w":245,"h":1024},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":245,"h":1024},
+	"sourceSize": {"w":245,"h":1024},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"waterleft.png":
+{
+	"frame": {"x":926,"y":2,"w":1558,"h":1575},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":1558,"h":1575},
+	"sourceSize": {"w":1558,"h":1575},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"waterright.png":
+{
+	"frame": {"x":2486,"y":2,"w":844,"h":1507},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":844,"h":1507},
+	"sourceSize": {"w":844,"h":1507},
+	"pivot": {"x":0.5,"y":0.5}
 }},
 "meta": {
 	"app": "http://www.codeandweb.com/texturepacker",
 	"version": "1.0",
 	"image": "spriteatlas.png",
 	"format": "RGBA8888",
-	"size": {"w":679,"h":578},
+	"size": {"w":3332,"h":1579},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:d03cdf670672e736cc5f05ca55d499f8:aacc3de2c6904b1c0d2ef8f904873a19:1fd55e2fd82dd1a0f07657f786644695$"
+	"smartupdate": "$TexturePacker:SmartUpdate:06514982159318b651d60787e2544d46:0d7518e7f4fad0d8608dc5ee17f1fd8f:1fd55e2fd82dd1a0f07657f786644695$"
 }
 }

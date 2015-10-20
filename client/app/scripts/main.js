@@ -26,7 +26,7 @@ var MapManager = function() {
   mbStats.domElement.style.top = '50px';
   document.body.appendChild( mbStats.domElement );
 
-  var origMapSize = { x: 3400, y: 3800 };
+  var origMapSize = { x: 3400, y: 2914 };
 
   fps = 60;
   var now;
@@ -34,14 +34,19 @@ var MapManager = function() {
   var interval = 1000/fps;
   var delta;
 
+  var aspectRatio = 7/6;
+  self.width = window.innerWidth*0.9;
+  self.height = self.width / aspectRatio;
+  self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
+
   self.sprites = {
-    'arlingtoncemetery.png': { pos: {x:500,y:500}},
-    'rooseveltisland.png' : {pos: {x:0,y:0}}
+    'waterbottom.png': { pos: {x:1700,y:2400}}
+    //'arlingtoncemetery.png': { pos: {x:500,y:500}},
+    //'rooseveltisland.png' : {pos: {x:0,y:0}}
   };
 
   self.resizeMap = function() {
     console.log('Resizing...');
-    var aspectRatio = 7/6;
     self.width = window.innerWidth*0.9;
     self.height = self.width / aspectRatio;
     self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
@@ -57,10 +62,7 @@ var MapManager = function() {
   window.addEventListener('resize', self.resizeMap, false);
   window.addEventListener('orientationchange', self.resizeMap, false);
 
-  self.width = window.innerWidth*0.9;
-  var aspectRatio = 7/6;
-  self.height = self.width / aspectRatio;
-  self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
+  self.resizeMap();
   console.log('scale:');
   console.log(self.scale);
 
@@ -117,7 +119,16 @@ var MapManager = function() {
       s.sprite.scale.x = self.scale.x;
       s.sprite.scale.y = self.scale.y;
       s.sprite.anchor = new PIXI.Point(0.5, 0.5);
-      s.sprite.position = new PIXI.Point(s.pos.x, s.pos.y);
+      //console.log(s.pos);
+      //console.log(self.width);
+      //console.log(self.width/origMapSize.x);
+      var sx = s.pos.x * (self.width/origMapSize.x);
+      var sy = s.pos.y * (self.height/origMapSize.y);
+      s.sprite.position = new PIXI.Point(sx, sy);
+      //console.log('s.sprite.texture');
+      //console.log(s.sprite.texture);
+      console.log(sx);
+      console.log(sy);
       self.stage.addChild(s.sprite);
     })
   };

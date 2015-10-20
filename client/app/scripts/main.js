@@ -40,7 +40,9 @@ var MapManager = function() {
   self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
 
   self.sprites = {
-    'waterbottom.png': { pos: {x:1700,y:2400}}
+    'waterbottom': { pos: {x:1900,y:2400}, frame: 'waterbottom.png'},
+    'waterleft': { pos: {x:1000,y:1300}, frame: 'waterleft.png'},
+    'waterright': { pos: {x:2400,y:1500}, frame: 'waterright.png'}
     //'arlingtoncemetery.png': { pos: {x:500,y:500}},
     //'rooseveltisland.png' : {pos: {x:0,y:0}}
   };
@@ -115,20 +117,13 @@ var MapManager = function() {
   self.addSprites = function() {
     _.forEach(self.sprites, function(s, key) {
       s.sprite = new PIXI.Sprite();
-      s.sprite.texture = PIXI.Texture.fromFrame(key);
+      s.sprite.texture = PIXI.Texture.fromFrame(s.frame);
       s.sprite.scale.x = self.scale.x;
       s.sprite.scale.y = self.scale.y;
       s.sprite.anchor = new PIXI.Point(0.5, 0.5);
-      //console.log(s.pos);
-      //console.log(self.width);
-      //console.log(self.width/origMapSize.x);
       var sx = s.pos.x * (self.width/origMapSize.x);
       var sy = s.pos.y * (self.height/origMapSize.y);
       s.sprite.position = new PIXI.Point(sx, sy);
-      //console.log('s.sprite.texture');
-      //console.log(s.sprite.texture);
-      console.log(sx);
-      console.log(sy);
       self.stage.addChild(s.sprite);
     })
   };
@@ -179,11 +174,10 @@ var DCMap = {
       drawMap: function (element, isInitialized, context) {
 
         if (isInitialized) {
-          //console.log('Already initialized')
-          //MANAGER.animate();
           return;
         }
 
+        console.log('Drawing!');
         element.appendChild(MANAGER.renderer.view);
         MANAGER.animate();
       }

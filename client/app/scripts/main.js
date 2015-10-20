@@ -42,9 +42,12 @@ var MapManager = function() {
   self.sprites = {
     'waterbottom': { pos: {x:1900,y:2400}, frame: 'waterbottom.png'},
     'waterleft': { pos: {x:1000,y:1300}, frame: 'waterleft.png'},
-    'waterright': { pos: {x:2400,y:1500}, frame: 'waterright.png'}
-    //'arlingtoncemetery.png': { pos: {x:500,y:500}},
-    //'rooseveltisland.png' : {pos: {x:0,y:0}}
+    'waterright': { pos: {x:2400,y:1500}, frame: 'waterright.png'},
+    'arlingtoncemetery': { pos: {x:1380,y:1720}, frame: 'arlingtoncemetery.png'},
+    'rooseveltisland' : {pos: {x:1350,y:1300}, frame: 'rooseveltisland.png'},
+    'orangeline' : {pos: {x:1700,y:1400}, frame: 'lineorange.png'},
+    'silverline' : {pos: {x:1630,y:1265}, frame: 'linesilver.png'}
+
   };
 
   self.resizeMap = function() {

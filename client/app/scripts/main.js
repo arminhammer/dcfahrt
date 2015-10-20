@@ -33,6 +33,7 @@ var MapManager = function() {
   var then = Date.now();
   var interval = 1000/fps;
   var delta;
+  var MOUSE_OVER_SCALE_RATIO = 1.5;
 
   var aspectRatio = 7/6;
   self.width = window.innerWidth*0.9;
@@ -44,10 +45,10 @@ var MapManager = function() {
     'waterleft': { pos: {x:1000,y:1300}, frame: 'waterleft.png'},
     'waterright': { pos: {x:2400,y:1500}, frame: 'waterright.png'},
     'arlingtoncemetery': { pos: {x:1380,y:1720}, frame: 'arlingtoncemetery.png'},
-    'rooseveltisland' : {pos: {x:1350,y:1300}, frame: 'rooseveltisland.png'},
-    'orangeline' : {pos: {x:1700,y:1400}, frame: 'lineorange.png'},
-    'silverline' : {pos: {x:1630,y:1265}, frame: 'linesilver.png'}
-
+    'rooseveltisland': {pos: {x:1350,y:1300}, frame: 'rooseveltisland.png'},
+    'orangeline': {pos: {x:1700,y:1400}, frame: 'lineorange.png'},
+    'silverline': {pos: {x:1630,y:1265}, frame: 'linesilver.png'},
+    'Rosslyn': {pos: {x:1200,y:1500}, frame: 'stationlarge.png', type: 'station'}
   };
 
   self.resizeMap = function() {
@@ -117,6 +118,58 @@ var MapManager = function() {
     requestAnimationFrame(self.animate);
   };
 
+  self.onStationMouseOver = function() {
+    console.log('Moused over!');
+    this.scale.set(this.scale.x*MOUSE_OVER_SCALE_RATIO);
+
+    var global = this.toGlobal(this.position);
+
+    this.tooltip = new PIXI.Graphics();
+    this.tooltip.lineStyle(3, 0x0000FF, 1);
+    this.tooltip.beginFill(0x000000, 1);
+    //self.draw.moveTo(x,y);
+    this.tooltip.drawRoundedRect(0+20,-self.height,200,100,10);
+    this.tooltip.endFill();
+    this.tooltip.textStyle = {
+      font : 'bold italic 28px Arial',
+      fill : '#F7EDCA',
+      stroke : '#4a1850',
+      strokeThickness : 5,
+      dropShadow : true,
+      dropShadowColor : '#000000',
+      dropShadowAngle : Math.PI / 6,
+      dropShadowDistance : 6,
+      wordWrap : true,
+      wordWrapWidth : 440
+    };
+
+    this.tooltip.text = new PIXI.Text('Test',this.tooltip.textStyle);
+    this.tooltip.text.x = 0+30;
+    this.tooltip.text.y = -this.height;
+
+    new TWEEN.Tween(this.tooltip)
+      .to({x:this.width},700)
+      .easing( TWEEN.Easing.Elastic.InOut )
+      .start();
+    new TWEEN.Tween(this.tooltip.text)
+      .to({x:this.width+20},700)
+      .easing( TWEEN.Easing.Elastic.InOut )
+      .start();
+
+    console.log('Adding tooltip');
+    this.addChild(this.tooltip);
+
+    this.addChild(this.tooltip.text);
+  };
+
+  self.onStationMouseOut = function() {
+    console.log('Moused out!');
+    this.scale.set(this.scale.x/MOUSE_OVER_SCALE_RATIO);
+
+    this.removeChild(this.tooltip);
+    this.removeChild(this.tooltip.text);
+  };
+
   self.addSprites = function() {
     _.forEach(self.sprites, function(s, key) {
       s.sprite = new PIXI.Sprite();
@@ -127,6 +180,14 @@ var MapManager = function() {
       var sx = s.pos.x * (self.width/origMapSize.x);
       var sy = s.pos.y * (self.height/origMapSize.y);
       s.sprite.position = new PIXI.Point(sx, sy);
+      if(s.type == 'station') {
+        console.log('Adding listeners');
+        s.sprite.interactive = true;
+        s.sprite.buttonMode = true;
+        s.sprite
+          .on('mouseover', self.onStationMouseOver)
+          .on('mouseout', self.onStationMouseOut);
+      }
       self.stage.addChild(s.sprite);
     })
   };

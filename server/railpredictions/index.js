@@ -1,14 +1,12 @@
 /**
  * Created by arminhammer on 10/29/15.
  */
-
 'use strict';
 
 var AWS = require('aws-sdk');
-var request = require('request');
-//var bluebird = require('bluebird');
-
-var s3 = new AWS.S3();
+var P = require('bluebird');
+var s3 = P.promisifyAll(new AWS.S3());
+var request = P.promisifyAll(require('request'));
 
 var env_params = {
     Bucket: 'env.dcfahrt.com',
@@ -16,86 +14,70 @@ var env_params = {
 };
 
 exports.handler = function(event, context) {
-
-    s3.getObject(env_params, function(err, envData) {
-        if(err) context.fail(err);
-        else {
+    var scope = {};
+    s3
+        .getObjectAsync(env_params)
+        .then(function(envData) {
             console.log('Received env data.');
-            console.log(envData);
-            var WMATA_API_KEY = JSON.parse(envData.Body.toString()).WMATA_API_KEY;
-            console.log(WMATA_API_KEY);
-
-            var options = {
+            scope.env = JSON.parse(envData.Body.toString());
+            scope.apiParams = {
                 url: 'https://api.wmata.com/StationPrediction.svc/json/GetPrediction/All',
                 headers: {
-                    'api_key': WMATA_API_KEY
+                    'api_key': scope.env.WMATA_API_KEY
                 }
             };
-
-            request(options, function(error, response, body) {
-
-                if(error) {
-                    console.log('There was an error: ' + error);
-                    context.fail(error)
+        })
+        .then(function() {
+            //console.log(scope);
+            var count = 0;
+            //console.log(context);
+            //console.log(context.getRemainingTimeInMillis());
+            function loop() {
+                if(count < 7) {
+                    count++;
+                    console.log('Looping...'+count);
+                    setTimeout(loop, 1000);
                 } else {
-                    console.log('Received response ' + response.statusCode);
-                    console.log(body);
-                    context.done("Finished.");
+                    //console.log('Finished executing, closing.');
+                    context.succeed('Finished.');
                 }
-
-            });
-
-
+            }
+            setTimeout(loop, 1000);
             //context.done();
-        }
-    });
+        })
+      /*
+        .then(request.getAsync(scope.apiParams))
+        .then(function(response, body) {
+            console.log(scope);
+            console.log('Received response ' + response.statusCode);
 
-    /*
-    if (!event.cmd) {
-        context.fail('Please specify a command to run as event.cmd');
-        return;
-    }
-    child = exec(event.cmd, function(error) {
-        // Resolve with result of process
-        context.done(error, 'Process complete!');
-    });
+            var apiData = JSON.parse(body);
+            apiData.timestamp = Date.now();
 
-    // Log process stdout and stderr
-    child.stdout.on('data', console.log);
-    child.stderr.on('data', console.error);
-    */
+            console.log(apiData.timestamp);
 
-};
-
-// Lambda Handler
-/*module.exports.handler = function(event, context) {
-
-
-
-    https.get(options, function(res) {
-        var body = '';
-        res.on('data', function(chunk) {
-            body += chunk;
-        });
-        res.on('end', function() {
-            var s3 = new AWS.S3();
-
-            var params = {
-                Bucket: process.env['S3_CACHE_BUCKET'],
+            var cacheParams = {
+                Bucket: env.S3_CACHE_BUCKET,
                 Key: 'dcrailprediction.json',
                 ACL: 'public-read',
-                Body: body
+                Body: JSON.stringify(apiData)
             };
 
-            s3.putObject(params, function(err, s3Data) {
-                if(err) context.fail(err);
+            s3.putObject(cacheParams, function(err, s3Data) {
+                if(err) {
+                    console.log('There was an error: ' + err);
+                    context.done('There was an error: ' + err);
+                }
                 else {
-                    context.succeed('Uploaded to S3.');
+                    console.log('Refreshed the rail prediction cache.');
+                    context.done('Uploaded to S3.');
                 }
             });
+
+        })
+        */
+        .catch(function(error) {
+            context.fail(error);
         });
-    }).on('error', function(e) {
-        return context.fail(e);
-    });
+        //context.done();
 };
-    */

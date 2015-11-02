@@ -29,7 +29,7 @@ exports.handler = function(event, context) {
         .then(function() {
             var loopCount = 0;
             function updateS3() {
-                if(loopCount < 3) {
+                if(loopCount < 60) {
                     loopCount++;
                     request
                         .getAsync(scope.apiParams)
@@ -46,7 +46,7 @@ exports.handler = function(event, context) {
                         .then(function() {
                             if(scope.cacheParams) { s3.putObjectAsync(scope.cacheParams)}
                         })
-                        .then(function() { setTimeout(updateS3, 1000); })
+                        .then(function() { setTimeout(updateS3, 15000); })
                         .catch(function(e) { context.fail(e); })
                 } else { context.succeed('Finished.'); }
             }

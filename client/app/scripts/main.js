@@ -41,6 +41,7 @@ var MapManager = function() {
   self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
 
   self.sprites = {
+    /*
     'waterbottom': { pos: {x:1900,y:2400}, frame: 'waterbottom.png'},
     'waterleft': { pos: {x:1000,y:1300}, frame: 'waterleft.png'},
     'waterright': { pos: {x:2400,y:1500}, frame: 'waterright.png'},
@@ -49,6 +50,7 @@ var MapManager = function() {
     'orangeline': {pos: {x:1700,y:1400}, frame: 'lineorange.png'},
     'silverline': {pos: {x:1630,y:1265}, frame: 'linesilver.png'},
     'Rosslyn': {pos: {x:1200,y:1500}, frame: 'stationlarge.png', type: 'station'}
+  */
   };
 
   self.resizeMap = function() {
@@ -228,7 +230,11 @@ var Navbar ={
 };
 
 var DCMap = {
-  controller: function() {
+  controller: function(args) {
+
+    console.log('args');
+    console.log(args.railPredictions());
+    console.log(args.railPredictions().timestamp);
 
     var MANAGER = new MapManager();
     console.log(MANAGER);
@@ -244,7 +250,8 @@ var DCMap = {
         console.log('Drawing!');
         element.appendChild(MANAGER.renderer.view);
         MANAGER.animate();
-      }
+      },
+      railPredictions: args.railPredictions
     };
   },
   view: function(controller) {
@@ -252,21 +259,37 @@ var DCMap = {
       m(".row", [
         m(".col-lg-12", [
           m("h1", "DC Map"),
-          m('#mapContainer', { config: controller.drawMap })
+          m('#mapContainer', { config: controller.drawMap }),
+          m('#railPredictions', controller.railPredictions().timestamp)
         ])
       ])
     ])
   }
 };
 
+var railPredictions = m.prop({});
+
+(function refreshPredictions() {
+  console.log('Updating...');
+  m
+    .request({
+    method: "GET",
+    url: "https://s3.amazonaws.com/cache.dcfahrt.com/dcrailprediction.json"
+  })
+    .then(railPredictions)
+    .then(setTimeout(refreshPredictions, 5000));
+})();
+
 var dcmetro = {
   controller: function() {
-    return {};
+    return {
+      railPredictions: railPredictions
+    };
   },
   view: function(controller) {
     return [
       m.component(Navbar, {}),
-      m.component(DCMap, {})
+      m.component(DCMap, {railPredictions: controller.railPredictions})
     ]
   }
 };

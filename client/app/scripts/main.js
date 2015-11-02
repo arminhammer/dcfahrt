@@ -97,6 +97,18 @@ var MapManager = function() {
 
   self.stage.MANAGER = self;
 
+  self.background = new PIXI.Container();
+  self.stage.addChild(self.background);
+  self.foreground = new PIXI.Container();
+  self.stage.addChild(self.foreground);
+
+  var backgroundMap = new PIXI.Sprite.fromImage('../images/mapCropped.png');
+  backgroundMap.scale.x = self.scale.x;
+  backgroundMap.scale.y = self.scale.y;
+  self.background.addChild(backgroundMap);
+
+  self.renderer.render(self.stage);
+
   self.animate = function(time) {
 
     now = Date.now();
@@ -190,7 +202,7 @@ var MapManager = function() {
           .on('mouseover', self.onStationMouseOver)
           .on('mouseout', self.onStationMouseOut);
       }
-      self.stage.addChild(s.sprite);
+      self.foreground.addChild(s.sprite);
     })
   };
 

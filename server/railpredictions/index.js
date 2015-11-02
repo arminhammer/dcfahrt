@@ -50,7 +50,7 @@ exports.handler = function(event, context) {
                         .catch(function(e) { context.fail(e); })
                 } else { context.succeed('Finished.'); }
             }
-            setTimeout(updateS3, 1000);
+            setTimeout(updateS3, 15000);
         })
         .catch(function(error) { context.fail(error); });
 };

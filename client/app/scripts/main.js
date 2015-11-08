@@ -605,15 +605,14 @@ var MapManager = function() {
 
   map.onStationMouseOver = function() {
     console.log('Moused over!');
+    console.log(this);
     this.scale.set(this.scale.x*MOUSE_OVER_SCALE_RATIO);
 
-    var global = this.toGlobal(this.position);
-
     this.tooltip = new PIXI.Graphics();
-    this.tooltip.lineStyle(3, 0x0000FF, 1);
-    this.tooltip.beginFill(0x000000, 1);
+    this.tooltip.lineStyle(3, 0x000000, 1);
+    this.tooltip.beginFill(0xFFFFFF, 1);
     //self.draw.moveTo(x,y);
-    this.tooltip.drawRoundedRect(0+20,-map.height,200,100,10);
+    this.tooltip.drawRoundedRect(0+20,-this.height,200,100,10);
     this.tooltip.endFill();
     this.tooltip.textStyle = {
       font : 'bold italic 28px Arial',
@@ -629,15 +628,15 @@ var MapManager = function() {
     };
 
     this.tooltip.text = new PIXI.Text('Test',this.tooltip.textStyle);
-    this.tooltip.text.x = 0+30;
+    this.tooltip.text.x = 0+40;
     this.tooltip.text.y = -this.height;
 
     new TWEEN.Tween(this.tooltip)
-      .to({x:this.width},700)
+      .to({x:this.width},200)
       .easing( TWEEN.Easing.Elastic.InOut )
       .start();
     new TWEEN.Tween(this.tooltip.text)
-      .to({x:this.width+20},700)
+      .to({x:this.width+30},200)
       .easing( TWEEN.Easing.Elastic.InOut )
       .start();
 
@@ -659,16 +658,8 @@ var MapManager = function() {
     _.forEach(map.stations, function(s, key) {
       console.log('Drawing station sprite for ' + key);
       s.sprite = new PIXI.Sprite();
-      var stationSprite;
-      if(s.Type == "large") {
-        console.log('Large station');
-        stationSprite = "stationlarge.png";
-      } else if(s.Type == "small") {
-        console.log('Small station');
-        stationSprite = "stationsmall.png";
-
-      }
-      s.sprite.texture = PIXI.Texture.fromFrame(stationSprite);
+      s.Type === "large" ? s.sprite.texture = PIXI.Texture.fromFrame("stationlarge.png") : s.sprite.texture = PIXI.Texture.fromFrame("stationsmall.png");
+      s.sprite.name = key;
       s.sprite.scale.x = map.scale.x;
       s.sprite.scale.y = map.scale.y;
       s.sprite.anchor = new PIXI.Point(0.5, 0.5);

@@ -3,7 +3,7 @@ var Fahrt = {};
 
 var MapManager = function() {
 
-  var self = this;
+  var map = this;
 
   var fpsStats = new Stats();
   fpsStats.setMode(0);
@@ -36,11 +36,11 @@ var MapManager = function() {
   var MOUSE_OVER_SCALE_RATIO = 1.5;
 
   var aspectRatio = 7/6;
-  self.width = window.innerWidth*0.9;
-  self.height = self.width / aspectRatio;
-  self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
+  map.width = window.innerWidth*0.9;
+  map.height = map.width / aspectRatio;
+  map.scale = { x: map.width / origMapSize.x, y: map.height / origMapSize.y };
 
-  self.sprites = {
+  map.sprites = {
     /*
      'waterbottom': { pos: {x:1900,y:2400}, frame: 'waterbottom.png'},
      'waterleft': { pos: {x:1000,y:1300}, frame: 'waterleft.png'},
@@ -53,7 +53,7 @@ var MapManager = function() {
      */
   };
 
-  self.stations = {
+  map.stations = {
     "Metro Center": {
       "Code": "C01",
       "Name": "Metro Center",
@@ -73,6 +73,26 @@ var MapManager = function() {
       },
       "Type": "large",
       "pos": { x: 1787, y: 1349}
+    },
+    "Vienna/Fairfax-GMU": {
+      "Code": "K08",
+      "Name": "Vienna/Fairfax-GMU",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.877693,
+      "Lon": -77.271562,
+      "Address": {
+        "Street": "9550 Saintsbury Drive",
+        "City": "Fairfax",
+        "State": "VA",
+        "Zip": "22031"
+      },
+      "Type": "small",
+      "pos": { x: 419, y: 1442}
     }
   };
 
@@ -508,84 +528,59 @@ var MapManager = function() {
         "State": "VA",
         "Zip": "22180"
       }
-    },
-    {
-      "Code": "K08",
-      "Name": "Vienna/Fairfax-GMU",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.877693,
-      "Lon": -77.271562,
-      "Address": {
-        "Street": "9550 Saintsbury Drive",
-        "City": "Fairfax",
-        "State": "VA",
-        "Zip": "22031"
-      }
     }
   ]
 
-  self.resizeMap = function() {
+  map.resizeMap = function() {
     console.log('Resizing...');
-    self.width = window.innerWidth*0.9;
-    self.height = self.width / aspectRatio;
-    self.scale = { x: self.width / origMapSize.x, y: self.height / origMapSize.y };
+    map.width = window.innerWidth*0.9;
+    map.height = map.width / aspectRatio;
+    map.scale = { x: map.width / origMapSize.x, y: map.height / origMapSize.y };
     console.log('scale:');
-    console.log(self.scale);
+    console.log(map.scale);
 
-    if(self.renderer) {
-      self.renderer.view.style.width = self.width+'px';
-      self.renderer.view.style.height = self.height+'px';
+    if(map.renderer) {
+      map.renderer.view.style.width = map.width+'px';
+      map.renderer.view.style.height = map.height+'px';
     }
   };
 
-  window.addEventListener('resize', self.resizeMap, false);
-  window.addEventListener('orientationchange', self.resizeMap, false);
+  window.addEventListener('resize', map.resizeMap, false);
+  window.addEventListener('orientationchange', map.resizeMap, false);
 
-  self.resizeMap();
+  map.resizeMap();
   console.log('scale:');
-  console.log(self.scale);
+  console.log(map.scale);
 
-  self.renderer = PIXI.autoDetectRenderer(self.width, self.height, {backgroundColor : 0xFFFFFF});
+  map.renderer = PIXI.autoDetectRenderer(map.width, map.height, {backgroundColor : 0xFFFFFF});
 
-  self.stage = new PIXI.Container();
-  self.stage.name = 'stage';
-  self.stage.selected = null;
-  self.stage.clickedOnlyStage = true;
-  self.stage.interactive = true;
-  self.stage.on('mouseup', function() {
-    if(self.stage.clickedOnlyStage) {
+  map.stage = new PIXI.Container();
+  map.stage.name = 'stage';
+  map.stage.selected = null;
+  map.stage.clickedOnlyStage = true;
+  map.stage.interactive = true;
+  map.stage.on('mouseup', function() {
+    if(map.stage.clickedOnlyStage) {
       console.log('Found stage click');
-      if(self.stage.selected) {
-        console.log(self.stage.selected);
-        self.stage.selected.filters = null;
-        self.stage.selected = null;
+      if(map.stage.selected) {
+        console.log(map.stage.selected);
+        map.stage.selected.filters = null;
+        map.stage.selected = null;
       }
     }
     else {
-      self.stage.clickedOnlyStage = true;
+      map.stage.clickedOnlyStage = true;
     }
   });
 
-  self.stage.MANAGER = self;
+  map.stage.MANAGER = map;
 
-  self.background = new PIXI.Container();
-  self.stage.addChild(self.background);
-  self.foreground = new PIXI.Container();
-  self.stage.addChild(self.foreground);
+  map.background = new PIXI.Container();
+  map.stage.addChild(map.background);
+  map.foreground = new PIXI.Container();
+  map.stage.addChild(map.foreground);
 
-  var backgroundMap = new PIXI.Sprite.fromImage('../images/mapCropped.png');
-  backgroundMap.scale.x = self.scale.x;
-  backgroundMap.scale.y = self.scale.y;
-  self.background.addChild(backgroundMap);
-
-  self.renderer.render(self.stage);
-
-  self.animate = function(time) {
+  map.animate = function(time) {
 
     now = Date.now();
     delta = now - then;
@@ -598,17 +593,17 @@ var MapManager = function() {
       then = now - (delta % interval);
 
       TWEEN.update(time);
-      self.renderer.render(self.stage);
+      map.renderer.render(map.stage);
 
       fpsStats.end();
       msStats.end();
       mbStats.end();
     }
 
-    requestAnimationFrame(self.animate);
+    requestAnimationFrame(map.animate);
   };
 
-  self.onStationMouseOver = function() {
+  map.onStationMouseOver = function() {
     console.log('Moused over!');
     this.scale.set(this.scale.x*MOUSE_OVER_SCALE_RATIO);
 
@@ -618,7 +613,7 @@ var MapManager = function() {
     this.tooltip.lineStyle(3, 0x0000FF, 1);
     this.tooltip.beginFill(0x000000, 1);
     //self.draw.moveTo(x,y);
-    this.tooltip.drawRoundedRect(0+20,-self.height,200,100,10);
+    this.tooltip.drawRoundedRect(0+20,-map.height,200,100,10);
     this.tooltip.endFill();
     this.tooltip.textStyle = {
       font : 'bold italic 28px Arial',
@@ -652,7 +647,7 @@ var MapManager = function() {
     this.addChild(this.tooltip.text);
   };
 
-  self.onStationMouseOut = function() {
+  map.onStationMouseOut = function() {
     console.log('Moused out!');
     this.scale.set(this.scale.x/MOUSE_OVER_SCALE_RATIO);
 
@@ -660,63 +655,72 @@ var MapManager = function() {
     this.removeChild(this.tooltip.text);
   };
 
-  self.addStationSprites = function() {
-    _.forEach(self.stations, function(s, key) {
+  map.addStationSprites = function() {
+    _.forEach(map.stations, function(s, key) {
       console.log('Drawing station sprite for ' + key);
       s.sprite = new PIXI.Sprite();
       var stationSprite;
       if(s.Type == "large") {
         console.log('Large station');
         stationSprite = "stationlarge.png";
+      } else if(s.Type == "small") {
+        console.log('Small station');
+        stationSprite = "stationsmall.png";
+
       }
       s.sprite.texture = PIXI.Texture.fromFrame(stationSprite);
-      s.sprite.scale.x = self.scale.x;
-      s.sprite.scale.y = self.scale.y;
+      s.sprite.scale.x = map.scale.x;
+      s.sprite.scale.y = map.scale.y;
       s.sprite.anchor = new PIXI.Point(0.5, 0.5);
-      var sx = s.pos.x * (self.width/origMapSize.x);
-      var sy = s.pos.y * (self.height/origMapSize.y);
+      var sx = s.pos.x * (map.width/origMapSize.x);
+      var sy = s.pos.y * (map.height/origMapSize.y);
       s.sprite.position = new PIXI.Point(sx, sy);
       console.log('Adding listeners');
       s.sprite.interactive = true;
       s.sprite.buttonMode = true;
       s.sprite
-        .on('mouseover', self.onStationMouseOver)
-        .on('mouseout', self.onStationMouseOut);
-      self.foreground.addChild(s.sprite);
+        .on('mouseover', map.onStationMouseOver)
+        .on('mouseout', map.onStationMouseOut);
+      map.foreground.addChild(s.sprite);
     })
   };
 
-  self.addSprites = function() {
-    _.forEach(self.sprites, function(s, key) {
+  map.addSprites = function() {
+    _.forEach(map.sprites, function(s, key) {
       s.sprite = new PIXI.Sprite();
       s.sprite.texture = PIXI.Texture.fromFrame(s.frame);
-      s.sprite.scale.x = self.scale.x;
-      s.sprite.scale.y = self.scale.y;
+      s.sprite.scale.x = map.scale.x;
+      s.sprite.scale.y = map.scale.y;
       s.sprite.anchor = new PIXI.Point(0.5, 0.5);
-      var sx = s.pos.x * (self.width/origMapSize.x);
-      var sy = s.pos.y * (self.height/origMapSize.y);
+      var sx = s.pos.x * (map.width/origMapSize.x);
+      var sy = s.pos.y * (map.height/origMapSize.y);
       s.sprite.position = new PIXI.Point(sx, sy);
       if(s.type == 'station') {
         console.log('Adding listeners');
         s.sprite.interactive = true;
         s.sprite.buttonMode = true;
         s.sprite
-          .on('mouseover', self.onStationMouseOver)
-          .on('mouseout', self.onStationMouseOut);
+          .on('mouseover', map.onStationMouseOver)
+          .on('mouseout', map.onStationMouseOut);
       }
-      self.foreground.addChild(s.sprite);
+      map.foreground.addChild(s.sprite);
     })
   };
 
-  self.onLoaded = function() {
+  map.onLoaded = function() {
     console.log('Assets loaded');
-    self.addStationSprites();
+    var backgroundMap = new PIXI.Sprite.fromImage('../images/mapCropped.png');
+    backgroundMap.scale.x = map.scale.x;
+    backgroundMap.scale.y = map.scale.y;
+    map.background.addChild(backgroundMap);
+    //map.renderer.render(map.stage);
+    map.addStationSprites();
   };
 
-  self.init = function() {
+  map.init = function() {
     PIXI.loader
       .add('../images/spriteatlas.json')
-      .load(self.onLoaded);
+      .load(map.onLoaded);
   };
 
 };
@@ -750,7 +754,7 @@ var DCMap = {
     console.log(args.railPredictions());
     console.log(args.railPredictions().timestamp);
 
-    var MANAGER = new MapManager();
+    console.log('Manager')
     console.log(MANAGER);
     MANAGER.init();
 
@@ -782,6 +786,7 @@ var DCMap = {
 };
 
 var railPredictions = m.prop({});
+var MANAGER = new MapManager();
 
 (function refreshPredictions() {
   console.log('Updating...');
@@ -791,6 +796,16 @@ var railPredictions = m.prop({});
       url: "https://s3.amazonaws.com/cache.dcfahrt.com/dcrailprediction.json"
     })
     .then(railPredictions)
+    .then(function(trains) {
+      console.log('Trains!');
+      console.log(MANAGER.stations);
+      trains.Trains.forEach(function(train) {
+        if(MANAGER.stations[train.LocationName]) {
+          console.log(train.LocationName);
+        }
+      });
+      //console.log(trains);
+    })
     .then(setTimeout(refreshPredictions, 5000));
 })();
 
@@ -803,7 +818,7 @@ var dcmetro = {
   view: function(controller) {
     return [
       m.component(Navbar, {}),
-      m.component(DCMap, {railPredictions: controller.railPredictions})
+      m.component(DCMap, controller)
     ]
   }
 };

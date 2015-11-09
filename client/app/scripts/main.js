@@ -72,7 +72,8 @@ var MapManager = function() {
         "Zip": "20005"
       },
       "Type": "large",
-      "pos": { x: 1787, y: 1349}
+      "pos": { x: 1787, y: 1349},
+      "trains": []
     },
     "Vienna/Fairfax-GMU": {
       "Code": "K08",
@@ -92,7 +93,8 @@ var MapManager = function() {
         "Zip": "22031"
       },
       "Type": "small",
-      "pos": { x: 419, y: 1442}
+      "pos": { x: 419, y: 1442},
+      "trains": []
     }
   };
 
@@ -627,7 +629,13 @@ var MapManager = function() {
       wordWrapWidth : 440
     };
 
-    this.tooltip.text = new PIXI.Text('Test',this.tooltip.textStyle);
+    var text = this.name+'\n';
+    map.stations[this.name].trains.forEach(function(train) {
+      text+=train.Destination+'  '+train.Min+'\n';
+    });
+    console.log('Text:');
+    console.log(text);
+    this.tooltip.text = new PIXI.Text(text,this.tooltip.textStyle);
     this.tooltip.text.x = 0+40;
     this.tooltip.text.y = -this.height;
 
@@ -745,7 +753,7 @@ var DCMap = {
     console.log(args.railPredictions());
     console.log(args.railPredictions().timestamp);
 
-    console.log('Manager')
+    console.log('Manager');
     console.log(MANAGER);
     MANAGER.init();
 
@@ -781,6 +789,9 @@ var MANAGER = new MapManager();
 
 (function refreshPredictions() {
   console.log('Updating...');
+  _.each(MANAGER.stations, function(station) {
+    station.trains = [];
+  });
   m
     .request({
       method: "GET",
@@ -792,10 +803,10 @@ var MANAGER = new MapManager();
       console.log(MANAGER.stations);
       trains.Trains.forEach(function(train) {
         if(MANAGER.stations[train.LocationName]) {
-          console.log(train.LocationName);
+          console.log(train.LocationName+': '+train.Destination+':'+train.Min);
+          MANAGER.stations[train.LocationName].trains.push(train);
         }
       });
-      //console.log(trains);
     })
     .then(setTimeout(refreshPredictions, 5000));
 })();

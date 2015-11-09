@@ -614,19 +614,15 @@ var MapManager = function() {
     this.tooltip.lineStyle(3, 0x000000, 1);
     this.tooltip.beginFill(0xFFFFFF, 1);
     //self.draw.moveTo(x,y);
-    this.tooltip.drawRoundedRect(0+20,-this.height,200,100,10);
+    this.tooltip.drawRoundedRect(0+20,-this.height,400,40+(map.stations[this.name].trains.length*40),10);
     this.tooltip.endFill();
     this.tooltip.textStyle = {
-      font : 'bold italic 28px Arial',
-      fill : '#F7EDCA',
+      font : '28px Arial',
+      fill : '#000000',
       stroke : '#4a1850',
-      strokeThickness : 5,
-      dropShadow : true,
-      dropShadowColor : '#000000',
-      dropShadowAngle : Math.PI / 6,
-      dropShadowDistance : 6,
+      strokeThickness : 0,
       wordWrap : true,
-      wordWrapWidth : 440
+      wordWrapWidth : 380
     };
 
     var text = this.name+'\n';

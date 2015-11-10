@@ -651,6 +651,11 @@ var MapManager = function() {
   map.foreground = new PIXI.Container();
   map.stage.addChild(map.foreground);
 
+  map.stationContainer = new PIXI.Container();
+  map.foreground.addChild(map.stationContainer);
+  map.tooltipContainer = new PIXI.Container();
+  map.foreground.addChild(map.tooltipContainer);
+
   var backgroundMap = new PIXI.Sprite.fromImage('../images/mapCropped.png');
   backgroundMap.scale.x = map.scale.x;
   backgroundMap.scale.y = map.scale.y;
@@ -688,7 +693,7 @@ var MapManager = function() {
     this.tooltip.lineStyle(3, 0x000000, 1);
     this.tooltip.beginFill(0xFFFFFF, 1);
     //self.draw.moveTo(x,y);
-    this.tooltip.drawRoundedRect(0+20,-this.height,400,40+(map.stations[this.name].trains.length*40),10);
+    this.tooltip.drawRoundedRect(this.x,this.y,400,40+(map.stations[this.name].trains.length*40),10);
     this.tooltip.endFill();
     this.tooltip.textStyle = {
       font : '28px Arial',
@@ -706,30 +711,29 @@ var MapManager = function() {
     console.log('Text:');
     console.log(text);
     this.tooltip.text = new PIXI.Text(text,this.tooltip.textStyle);
-    this.tooltip.text.x = 0+40;
-    this.tooltip.text.y = -this.height;
+    this.tooltip.text.x = this.x+5;
+    this.tooltip.text.y = this.y+5;
 
     new TWEEN.Tween(this.tooltip)
-      .to({x:this.width},200)
+      .to({x:this.tooltip.x+30},200)
       .easing( TWEEN.Easing.Elastic.InOut )
       .start();
     new TWEEN.Tween(this.tooltip.text)
-      .to({x:this.width+30},200)
+      .to({x:this.x+35},200)
       .easing( TWEEN.Easing.Elastic.InOut )
       .start();
 
     console.log('Adding tooltip');
-    this.addChild(this.tooltip);
-
-    this.addChild(this.tooltip.text);
+    map.tooltipContainer.addChild(this.tooltip);
+    map.tooltipContainer.addChild(this.tooltip.text);
   };
 
   map.onStationMouseOut = function() {
     console.log('Moused out!');
     this.scale.set(this.scale.x/MOUSE_OVER_SCALE_RATIO);
 
-    this.removeChild(this.tooltip);
-    this.removeChild(this.tooltip.text);
+    map.tooltipContainer.removeChild(this.tooltip);
+    map.tooltipContainer.removeChild(this.tooltip.text);
   };
 
   map.addStationSprites = function() {
@@ -750,29 +754,7 @@ var MapManager = function() {
       s.sprite
         .on('mouseover', map.onStationMouseOver)
         .on('mouseout', map.onStationMouseOut);
-      map.foreground.addChild(s.sprite);
-    })
-  };
-
-  map.addSprites = function() {
-    _.forEach(map.sprites, function(s, key) {
-      s.sprite = new PIXI.Sprite();
-      s.sprite.texture = PIXI.Texture.fromFrame(s.frame);
-      s.sprite.scale.x = map.scale.x;
-      s.sprite.scale.y = map.scale.y;
-      s.sprite.anchor = new PIXI.Point(0.5, 0.5);
-      var sx = s.pos.x * (map.width/origMapSize.x);
-      var sy = s.pos.y * (map.height/origMapSize.y);
-      s.sprite.position = new PIXI.Point(sx, sy);
-      if(s.type == 'station') {
-        console.log('Adding listeners');
-        s.sprite.interactive = true;
-        s.sprite.buttonMode = true;
-        s.sprite
-          .on('mouseover', map.onStationMouseOver)
-          .on('mouseout', map.onStationMouseOut);
-      }
-      map.foreground.addChild(s.sprite);
+      map.stationContainer.addChild(s.sprite);
     })
   };
 

@@ -9,21 +9,21 @@ var MapManager = function() {
   fpsStats.setMode(0);
   fpsStats.domElement.style.position = 'absolute';
   fpsStats.domElement.style.left = '0px';
-  fpsStats.domElement.style.top = '50px';
+  fpsStats.domElement.style.top = '2000px';
   document.body.appendChild( fpsStats.domElement );
 
   var msStats = new Stats();
   msStats.setMode(1);
   msStats.domElement.style.position = 'absolute';
   msStats.domElement.style.left = '80px';
-  msStats.domElement.style.top = '50px';
+  msStats.domElement.style.top = '2000px';
   document.body.appendChild( msStats.domElement );
 
   var mbStats = new Stats();
   mbStats.setMode(2);
   mbStats.domElement.style.position = 'absolute';
   mbStats.domElement.style.left = '160px';
-  mbStats.domElement.style.top = '50px';
+  mbStats.domElement.style.top = '2000px';
   document.body.appendChild( mbStats.domElement );
 
   var origMapSize = { x: 3400, y: 2914 };
@@ -54,6 +54,258 @@ var MapManager = function() {
   };
 
   map.stations = {
+    "Vienna/Fairfax-GMU": {
+      "Code": "K08",
+      "Name": "Vienna/Fairfax-GMU",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.877693,
+      "Lon": -77.271562,
+      "Address": {
+        "Street": "9550 Saintsbury Drive",
+        "City": "Fairfax",
+        "State": "VA",
+        "Zip": "22031"
+      },
+      "Type": "small",
+      "pos": { x: 419, y: 1442},
+      "trains": []
+    },
+    "Dunn Loring-Merrifield": {
+      "Code": "K07",
+      "Name": "Dunn Loring-Merrifield",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.883015,
+      "Lon": -77.228939,
+      "Address": {
+        "Street": "2700 Gallows Road",
+        "City": "Vienna",
+        "State": "VA",
+        "Zip": "22180"
+      },
+      "Type": "small",
+      "pos": { x: 522, y: 1442},
+      "trains": []
+    },
+    "West Falls Church-VT/UVA": {
+      "Code": "K06",
+      "Name": "West Falls Church-VT/UVA",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.90067,
+      "Lon": -77.189394,
+      "Address": {
+        "Street": "7040 Haycock Road",
+        "City": "Falls Church",
+        "State": "VA",
+        "Zip": "22043"
+      },
+      "Type": "small",
+      "pos": { x: 624, y: 1442},
+      "trains": []
+    },
+    "East Falls Church": {
+      "Code": "K05",
+      "Name": "East Falls Church",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": "SV",
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.885841,
+      "Lon": -77.157177,
+      "Address": {
+        "Street": "2001 N. Sycamore St.",
+        "City": "Arlington",
+        "State": "VA",
+        "Zip": "22205"
+      },
+      "Type": "large",
+      "pos": { x: 759, y: 1467},
+      "trains": []
+    },
+    "Ballston-MU": {
+      "Code": "K04",
+      "Name": "Ballston-MU",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": "SV",
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.882071,
+      "Lon": -77.111845,
+      "Address": {
+        "Street": "4230 Fairfax Drive",
+        "City": "Arlington",
+        "State": "VA",
+        "Zip": "22201"
+      },
+      "Type": "small",
+      "pos": { x: 859, y: 1467 },
+      "trains": []
+    },
+    "Virginia Square-GMU": {
+      "Code": "K03",
+      "Name": "Virginia Square-GMU",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": "SV",
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.88331,
+      "Lon": -77.104267,
+      "Address": {
+        "Street": "3600 Fairfax Drive",
+        "City": "Arlington",
+        "State": "VA",
+        "Zip": "22201"
+      },
+      "Type": "small",
+      "pos": { x: 934, y: 1467 },
+      "trains": []
+    },
+    "Clarendon": {
+      "Code": "K02",
+      "Name": "Clarendon",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": "SV",
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.886373,
+      "Lon": -77.096963,
+      "Address": {
+        "Street": "3100 Wilson Blvd",
+        "City": "Arlington",
+        "State": "VA",
+        "Zip": "22201"
+      },
+      "Type": "small",
+      "pos": { x: 1011, y: 1467 },
+      "trains": []
+    },
+    "Court House": {
+      "Code": "K01",
+      "Name": "Court House",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": "SV",
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.891499,
+      "Lon": -77.08391,
+      "Address": {
+        "Street": "2100 Wilson Blvd",
+        "City": "Arlington",
+        "State": "VA",
+        "Zip": "22201"
+      },
+      "Type": "small",
+      "pos": { x: 1087, y: 1467 },
+      "trains": []
+    },
+    "Rosslyn": {
+      "Code": "C05",
+      "Name": "Rosslyn",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.896595,
+      "Lon": -77.07146,
+      "Address": {
+        "Street": "1850 N. Moore Street",
+        "City": "Arlington",
+        "State": "VA",
+        "Zip": "22209"
+      },
+      "Type": "large",
+      "pos": { x: 1201, y: 1355},
+      "trains": []
+    },
+    "Foggy Bottom-GWU": {
+      "Code": "C04",
+      "Name": "Foggy Bottom-GWU",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.900599,
+      "Lon": -77.050273,
+      "Address": {
+        "Street": "2301 I St. NW",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20037"
+      },
+      "Type": "small",
+      "pos": { x: 1467, y: 1205},
+      "trains": []
+    },
+    "Farragut West": {
+      "Code": "C03",
+      "Name": "Farragut West",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.901311,
+      "Lon": -77.03981,
+      "Address": {
+        "Street": "900 18th St. NW",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20006"
+      },
+      "Type": "small",
+      "pos": { x: 1551, y: 1205},
+      "trains": []
+    },
+    "McPherson Square": {
+      "Code": "C02",
+      "Name": "McPherson Square",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.901316,
+      "Lon": -77.033652,
+      "Address": {
+        "Street": "1400 I St. NW",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20005"
+      },
+      "Type": "small",
+      "pos": { x: 1702, y: 1205},
+      "trains": []
+    },
     "Metro Center": {
       "Code": "C01",
       "Name": "Metro Center",
@@ -75,463 +327,280 @@ var MapManager = function() {
       "pos": { x: 1787, y: 1349},
       "trains": []
     },
-    "Vienna/Fairfax-GMU": {
-      "Code": "K08",
-      "Name": "Vienna/Fairfax-GMU",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.877693,
-      "Lon": -77.271562,
-      "Address": {
-        "Street": "9550 Saintsbury Drive",
-        "City": "Fairfax",
-        "State": "VA",
-        "Zip": "22031"
-      },
-      "Type": "small",
-      "pos": { x: 419, y: 1442},
-      "trains": []
-    }
+    "Federal Triangle": {
+    "Code": "D01",
+    "Name": "Federal Triangle",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "BL",
+    "LineCode2": "OR",
+    "LineCode3": "SV",
+    "LineCode4": null,
+    "Lat": 38.893757,
+    "Lon": -77.028218,
+    "Address": {
+    "Street": "302 12th St. NW",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20004"
+  },
+    "Type": "small",
+    "pos": { x: 1787, y: 1458},
+    "trains": []
+  },
+    "Smithsonian": {
+    "Code": "D02",
+    "Name": "Smithsonian",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "BL",
+    "LineCode2": "OR",
+    "LineCode3": "SV",
+    "LineCode4": null,
+    "Lat": 38.888022,
+    "Lon": -77.028232,
+    "Address": {
+    "Street": "1200 Independence Avenue SW",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20004"
+  },
+    "Type": "small",
+    "pos": { x: 1787, y: 1540},
+    "trains": []
+  },
+    "L'Enfant Plaza": {
+    "Code": "D03",
+    "Name": "L'Enfant Plaza",
+    "StationTogether1": "F03",
+    "StationTogether2": "",
+    "LineCode1": "BL",
+    "LineCode2": "OR",
+    "LineCode3": "SV",
+    "LineCode4": null,
+    "Lat": 38.884775,
+    "Lon": -77.021964,
+    "Address": {
+    "Street": "600 Maryland Avenue SW",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20024"
+  },
+    "Type": "large",
+    "pos": { x: 2000, y: 1629},
+    "trains": []
+  },
+    "Federal Center SW": {
+    "Code": "D04",
+    "Name": "Federal Center SW",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "BL",
+    "LineCode2": "OR",
+    "LineCode3": "SV",
+    "LineCode4": null,
+    "Lat": 38.884958,
+    "Lon": -77.01586,
+    "Address": {
+    "Street": "401 3rd Street SW",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20024"
+  },
+    "Type": "small",
+    "pos": { x: 2126, y: 1629},
+    "trains": []
+  },
+    "Capitol South": {
+    "Code": "D05",
+    "Name": "Capitol South",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "BL",
+    "LineCode2": "OR",
+    "LineCode3": "SV",
+    "LineCode4": null,
+    "Lat": 38.884968,
+    "Lon": -77.005137,
+    "Address": {
+    "Street": "355 First Street SE",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20003"
+  },
+    "Type": "small",
+    "pos": { x: 2234, y: 1629},
+    "trains": []
+  },
+    "Eastern Market": {
+    "Code": "D06",
+    "Name": "Eastern Market",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "BL",
+    "LineCode2": "OR",
+    "LineCode3": "SV",
+    "LineCode4": null,
+    "Lat": 38.884124,
+    "Lon": -76.995334,
+    "Address": {
+    "Street": "701 Pennsylvania Avenue SE",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20003"
+  },
+    "Type": "small",
+    "pos": { x: 2335, y: 1610},
+    "trains": []
+  },
+    "Potomac Ave": {
+    "Code": "D07",
+    "Name": "Potomac Ave",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "BL",
+    "LineCode2": "OR",
+    "LineCode3": "SV",
+    "LineCode4": null,
+    "Lat": 38.880841,
+    "Lon": -76.985721,
+    "Address": {
+    "Street": "700 14th Street SE",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20003"
+  },
+    "Type": "small",
+    "pos": { x: 2392, y: 1552},
+    "trains": []
+  },
+    "Stadium-Armory": {
+    "Code": "D08",
+    "Name": "Stadium-Armory",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "BL",
+    "LineCode2": "OR",
+    "LineCode3": "SV",
+    "LineCode4": null,
+    "Lat": 38.88594,
+    "Lon": -76.977485,
+    "Address": {
+    "Street": "192 19th St. SE",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20003"
+  },
+    "Type": "large",
+    "pos": { x: 2511, y: 1526},
+    "trains": []
+  },
+    "Minnesota Ave": {
+    "Code": "D09",
+    "Name": "Minnesota Ave",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "OR",
+    "LineCode2": null,
+    "LineCode3": null,
+    "LineCode4": null,
+    "Lat": 38.898284,
+    "Lon": -76.948042,
+    "Address": {
+    "Street": "4000 Minnesota Avenue NE",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20019"
+  },
+    "Type": "small",
+    "pos": { x: 2707, y: 1449},
+    "trains": []
+  },
+    "Deanwood": {
+    "Code": "D10",
+    "Name": "Deanwood",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "OR",
+    "LineCode2": null,
+    "LineCode3": null,
+    "LineCode4": null,
+    "Lat": 38.907734,
+    "Lon": -76.936177,
+    "Address": {
+    "Street": "4720 Minnesota Avenue NE",
+      "City": "Washington",
+      "State": "DC",
+      "Zip": "20019"
+  },
+    "Type": "small",
+    "pos": { x: 2772, y: 1386},
+    "trains": []
+  },
+    "Cheverly": {
+    "Code": "D11",
+    "Name": "Cheverly",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "OR",
+    "LineCode2": null,
+    "LineCode3": null,
+    "LineCode4": null,
+    "Lat": 38.91652,
+    "Lon": -76.915427,
+    "Address": {
+    "Street": "5501 Columbia Park",
+      "City": "Cheverly",
+      "State": "MD",
+      "Zip": "20785"
+  },
+    "Type": "small",
+    "pos": { x: 2835, y: 1321},
+    "trains": []
+  },
+    "Landover": {
+    "Code": "D12",
+    "Name": "Landover",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "OR",
+    "LineCode2": null,
+    "LineCode3": null,
+    "LineCode4": null,
+    "Lat": 38.934411,
+    "Lon": -76.890988,
+    "Address": {
+    "Street": "3000 Pennsy Drive",
+      "City": "Hyattsville",
+      "State": "MD",
+      "Zip": "20785"
+  },
+    "Type": "small",
+    "pos": { x: 2899, y: 1257 },
+    "trains": []
+  },
+    "New Carrollton": {
+    "Code": "D13",
+    "Name": "New Carrollton",
+    "StationTogether1": "",
+    "StationTogether2": "",
+    "LineCode1": "OR",
+    "LineCode2": null,
+    "LineCode3": null,
+    "LineCode4": null,
+    "Lat": 38.947674,
+    "Lon": -76.872144,
+    "Address": {
+    "Street": "4700 Garden City Drive",
+      "City": "New Carrollton",
+      "State": "MD",
+      "Zip": "20784"
+  },
+    "Type": "small",
+    "pos": { x: 2964, y: 1193},
+    "trains": []
+  },
   };
-
-  var Stations = [
-    {
-      "Code": "C02",
-      "Name": "McPherson Square",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.901316,
-      "Lon": -77.033652,
-      "Address": {
-        "Street": "1400 I St. NW",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20005"
-      }
-    },
-    {
-      "Code": "C03",
-      "Name": "Farragut West",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.901311,
-      "Lon": -77.03981,
-      "Address": {
-        "Street": "900 18th St. NW",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20006"
-      }
-    },
-    {
-      "Code": "C04",
-      "Name": "Foggy Bottom-GWU",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.900599,
-      "Lon": -77.050273,
-      "Address": {
-        "Street": "2301 I St. NW",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20037"
-      }
-    },
-    {
-      "Code": "C05",
-      "Name": "Rosslyn",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.896595,
-      "Lon": -77.07146,
-      "Address": {
-        "Street": "1850 N. Moore Street",
-        "City": "Arlington",
-        "State": "VA",
-        "Zip": "22209"
-      }
-    },
-    {
-      "Code": "D01",
-      "Name": "Federal Triangle",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.893757,
-      "Lon": -77.028218,
-      "Address": {
-        "Street": "302 12th St. NW",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20004"
-      }
-    },
-    {
-      "Code": "D02",
-      "Name": "Smithsonian",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.888022,
-      "Lon": -77.028232,
-      "Address": {
-        "Street": "1200 Independence Avenue SW",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20004"
-      }
-    },
-    {
-      "Code": "D03",
-      "Name": "L'Enfant Plaza",
-      "StationTogether1": "F03",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.884775,
-      "Lon": -77.021964,
-      "Address": {
-        "Street": "600 Maryland Avenue SW",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20024"
-      }
-    },
-    {
-      "Code": "D04",
-      "Name": "Federal Center SW",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.884958,
-      "Lon": -77.01586,
-      "Address": {
-        "Street": "401 3rd Street SW",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20024"
-      }
-    },
-    {
-      "Code": "D05",
-      "Name": "Capitol South",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.884968,
-      "Lon": -77.005137,
-      "Address": {
-        "Street": "355 First Street SE",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20003"
-      }
-    },
-    {
-      "Code": "D06",
-      "Name": "Eastern Market",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.884124,
-      "Lon": -76.995334,
-      "Address": {
-        "Street": "701 Pennsylvania Avenue SE",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20003"
-      }
-    },
-    {
-      "Code": "D07",
-      "Name": "Potomac Ave",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.880841,
-      "Lon": -76.985721,
-      "Address": {
-        "Street": "700 14th Street SE",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20003"
-      }
-    },
-    {
-      "Code": "D08",
-      "Name": "Stadium-Armory",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "BL",
-      "LineCode2": "OR",
-      "LineCode3": "SV",
-      "LineCode4": null,
-      "Lat": 38.88594,
-      "Lon": -76.977485,
-      "Address": {
-        "Street": "192 19th St. SE",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20003"
-      }
-    },
-    {
-      "Code": "D09",
-      "Name": "Minnesota Ave",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.898284,
-      "Lon": -76.948042,
-      "Address": {
-        "Street": "4000 Minnesota Avenue NE",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20019"
-      }
-    },
-    {
-      "Code": "D10",
-      "Name": "Deanwood",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.907734,
-      "Lon": -76.936177,
-      "Address": {
-        "Street": "4720 Minnesota Avenue NE",
-        "City": "Washington",
-        "State": "DC",
-        "Zip": "20019"
-      }
-    },
-    {
-      "Code": "D11",
-      "Name": "Cheverly",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.91652,
-      "Lon": -76.915427,
-      "Address": {
-        "Street": "5501 Columbia Park",
-        "City": "Cheverly",
-        "State": "MD",
-        "Zip": "20785"
-      }
-    },
-    {
-      "Code": "D12",
-      "Name": "Landover",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.934411,
-      "Lon": -76.890988,
-      "Address": {
-        "Street": "3000 Pennsy Drive",
-        "City": "Hyattsville",
-        "State": "MD",
-        "Zip": "20785"
-      }
-    },
-    {
-      "Code": "D13",
-      "Name": "New Carrollton",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.947674,
-      "Lon": -76.872144,
-      "Address": {
-        "Street": "4700 Garden City Drive",
-        "City": "New Carrollton",
-        "State": "MD",
-        "Zip": "20784"
-      }
-    },
-    {
-      "Code": "K01",
-      "Name": "Court House",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": "SV",
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.891499,
-      "Lon": -77.08391,
-      "Address": {
-        "Street": "2100 Wilson Blvd",
-        "City": "Arlington",
-        "State": "VA",
-        "Zip": "22201"
-      }
-    },
-    {
-      "Code": "K02",
-      "Name": "Clarendon",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": "SV",
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.886373,
-      "Lon": -77.096963,
-      "Address": {
-        "Street": "3100 Wilson Blvd",
-        "City": "Arlington",
-        "State": "VA",
-        "Zip": "22201"
-      }
-    },
-    {
-      "Code": "K03",
-      "Name": "Virginia Square-GMU",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": "SV",
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.88331,
-      "Lon": -77.104267,
-      "Address": {
-        "Street": "3600 Fairfax Drive",
-        "City": "Arlington",
-        "State": "VA",
-        "Zip": "22201"
-      }
-    },
-    {
-      "Code": "K04",
-      "Name": "Ballston-MU",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": "SV",
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.882071,
-      "Lon": -77.111845,
-      "Address": {
-        "Street": "4230 Fairfax Drive",
-        "City": "Arlington",
-        "State": "VA",
-        "Zip": "22201"
-      }
-    },
-    {
-      "Code": "K05",
-      "Name": "East Falls Church",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": "SV",
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.885841,
-      "Lon": -77.157177,
-      "Address": {
-        "Street": "2001 N. Sycamore St.",
-        "City": "Arlington",
-        "State": "VA",
-        "Zip": "22205"
-      }
-    },
-    {
-      "Code": "K06",
-      "Name": "West Falls Church-VT/UVA",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.90067,
-      "Lon": -77.189394,
-      "Address": {
-        "Street": "7040 Haycock Road",
-        "City": "Falls Church",
-        "State": "VA",
-        "Zip": "22043"
-      }
-    },
-    {
-      "Code": "K07",
-      "Name": "Dunn Loring-Merrifield",
-      "StationTogether1": "",
-      "StationTogether2": "",
-      "LineCode1": "OR",
-      "LineCode2": null,
-      "LineCode3": null,
-      "LineCode4": null,
-      "Lat": 38.883015,
-      "Lon": -77.228939,
-      "Address": {
-        "Street": "2700 Gallows Road",
-        "City": "Vienna",
-        "State": "VA",
-        "Zip": "22180"
-      }
-    }
-  ]
 
   map.resizeMap = function() {
     console.log('Resizing...');
@@ -581,6 +650,11 @@ var MapManager = function() {
   map.stage.addChild(map.background);
   map.foreground = new PIXI.Container();
   map.stage.addChild(map.foreground);
+
+  var backgroundMap = new PIXI.Sprite.fromImage('../images/mapCropped.png');
+  backgroundMap.scale.x = map.scale.x;
+  backgroundMap.scale.y = map.scale.y;
+  map.background.addChild(backgroundMap);
 
   map.animate = function(time) {
 
@@ -704,10 +778,6 @@ var MapManager = function() {
 
   map.onLoaded = function() {
     console.log('Assets loaded');
-    var backgroundMap = new PIXI.Sprite.fromImage('../images/mapCropped.png');
-    backgroundMap.scale.x = map.scale.x;
-    backgroundMap.scale.y = map.scale.y;
-    map.background.addChild(backgroundMap);
     //map.renderer.render(map.stage);
     map.addStationSprites();
   };

@@ -651,6 +651,8 @@ var MapManager = function() {
   map.foreground = new PIXI.Container();
   map.stage.addChild(map.foreground);
 
+  map.trainContainer = new PIXI.Container();
+  map.foreground.addChild(map.trainContainer);
   map.stationContainer = new PIXI.Container();
   map.foreground.addChild(map.stationContainer);
   map.tooltipContainer = new PIXI.Container();
@@ -660,6 +662,8 @@ var MapManager = function() {
   backgroundMap.scale.x = map.scale.x;
   backgroundMap.scale.y = map.scale.y;
   map.background.addChild(backgroundMap);
+
+  //map.renderer.render(map.stage);
 
   map.animate = function(time) {
 
@@ -758,10 +762,28 @@ var MapManager = function() {
     })
   };
 
+  map.addTrainSprites = function() {
+    var train = new PIXI.Sprite();
+    train.texture = PIXI.Texture.fromFrame("train.png");
+    train.x = 550;
+    train.y = 515;
+    train.scale.x = map.scale.x;
+    train.scale.y = map.scale.y;
+    train.anchor = new PIXI.Point(0.5, 0.5);
+
+    new TWEEN.Tween(train)
+      .to({x:train.x+300},60000)
+      //.easing( TWEEN.Easing.Elastic.InOut )
+      .start();
+
+    map.trainContainer.addChild(train);
+  };
+
   map.onLoaded = function() {
     console.log('Assets loaded');
     //map.renderer.render(map.stage);
     map.addStationSprites();
+    map.addTrainSprites();
   };
 
   map.init = function() {

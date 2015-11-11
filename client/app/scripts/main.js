@@ -742,7 +742,7 @@ var MapManager = function() {
 
   map.addStationSprites = function() {
     _.forEach(map.stations, function(s, key) {
-      console.log('Drawing station sprite for ' + key);
+      //console.log('Drawing station sprite for ' + key);
       s.sprite = new PIXI.Sprite();
       s.Type === "large" ? s.sprite.texture = PIXI.Texture.fromFrame("stationlarge.png") : s.sprite.texture = PIXI.Texture.fromFrame("stationsmall.png");
       s.sprite.name = key;
@@ -752,7 +752,7 @@ var MapManager = function() {
       var sx = s.pos.x * (map.width/origMapSize.x);
       var sy = s.pos.y * (map.height/origMapSize.y);
       s.sprite.position = new PIXI.Point(sx, sy);
-      console.log('Adding listeners');
+      //console.log('Adding listeners');
       s.sprite.interactive = true;
       s.sprite.buttonMode = true;
       s.sprite
@@ -762,20 +762,76 @@ var MapManager = function() {
     })
   };
 
+  var lines = {
+    orange: [
+      {
+        type: "station",
+        name: "Vienna/Fairfax-GMU",
+        pos: { x: 419, y: 1442},
+        timeToNext: 20000
+      },
+      {
+        type: "station",
+        name: "Dunn Loring-Merrifield",
+        pos: { x: 522, y: 1442},
+        timeToNext: 20000
+      },
+      {
+        type: "station",
+        name: "West Falls Church-VT/UVA",
+        pos: { x: 624, y: 1442},
+        timeToNext: 20000
+      }
+    ]
+  };
+
+  function createTween(train, line, position, direction) {
+    new TWEEN.Tween(train)
+      .to({
+        x: lines[line][position+1].pos.x * (map.width/origMapSize.x),
+        y: lines[line][position+1].pos.y * (map.height/origMapSize.y)
+      },lines[line][position].timeToNext)
+      .onComplete(function() {
+        if(lines[line][position+2]) {
+          createTween(train, line, position+1)
+        } else {
+          console.log('Completed loop');
+        }
+      })
+      .start();
+  }
+
   map.addTrainSprites = function() {
     var train = new PIXI.Sprite();
     train.texture = PIXI.Texture.fromFrame("train.png");
-    train.x = 550;
-    train.y = 515;
     train.scale.x = map.scale.x;
     train.scale.y = map.scale.y;
     train.anchor = new PIXI.Point(0.5, 0.5);
 
-    new TWEEN.Tween(train)
-      .to({x:train.x+300},60000)
-      //.easing( TWEEN.Easing.Elastic.InOut )
-      .start();
+    var sx = lines.orange[0].pos.x * (map.width/origMapSize.x);
+    var sy = lines.orange[0].pos.y * (map.height/origMapSize.y);
+    train.position = new PIXI.Point(sx, sy);
 
+    //train.x = lines.orange[0].pos.x;
+    //train.y = lines.orange[0].pos.y;
+
+    //train.x = lines.orange[0].pos.x;
+    //train.y = lines.orange[0].pos.y;
+
+    console.log('Drawing train at ' + train.x+':'+train.y);
+
+    createTween(train, "orange", 0);
+    /*
+    new TWEEN.Tween(train)
+      .to({
+        x: lines.orange[1].pos.x * (map.width/origMapSize.x),
+        y: lines.orange[1].pos.y * (map.height/origMapSize.y)
+      },lines.orange[0].timeToNext)
+      .onComplete(function() {
+        console.log('Completed loop');
+      })
+      .start();
+     */
     map.trainContainer.addChild(train);
   };
 
@@ -869,11 +925,11 @@ var MANAGER = new MapManager();
     })
     .then(railPredictions)
     .then(function(trains) {
-      console.log('Trains!');
-      console.log(MANAGER.stations);
+      //console.log('Trains!');
+      //console.log(MANAGER.stations);
       trains.Trains.forEach(function(train) {
         if(MANAGER.stations[train.LocationName]) {
-          console.log(train.LocationName+': '+train.Destination+':'+train.Min);
+          //console.log(train.LocationName+': '+train.Destination+':'+train.Min);
           MANAGER.stations[train.LocationName].trains.push(train);
         }
       });

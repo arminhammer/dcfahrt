@@ -328,278 +328,278 @@ var MapManager = function() {
       "trains": []
     },
     "Federal Triangle": {
-    "Code": "D01",
-    "Name": "Federal Triangle",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "BL",
-    "LineCode2": "OR",
-    "LineCode3": "SV",
-    "LineCode4": null,
-    "Lat": 38.893757,
-    "Lon": -77.028218,
-    "Address": {
-    "Street": "302 12th St. NW",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20004"
-  },
-    "Type": "small",
-    "pos": { x: 1787, y: 1458},
-    "trains": []
-  },
+      "Code": "D01",
+      "Name": "Federal Triangle",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.893757,
+      "Lon": -77.028218,
+      "Address": {
+        "Street": "302 12th St. NW",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20004"
+      },
+      "Type": "small",
+      "pos": { x: 1787, y: 1458},
+      "trains": []
+    },
     "Smithsonian": {
-    "Code": "D02",
-    "Name": "Smithsonian",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "BL",
-    "LineCode2": "OR",
-    "LineCode3": "SV",
-    "LineCode4": null,
-    "Lat": 38.888022,
-    "Lon": -77.028232,
-    "Address": {
-    "Street": "1200 Independence Avenue SW",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20004"
-  },
-    "Type": "small",
-    "pos": { x: 1787, y: 1540},
-    "trains": []
-  },
+      "Code": "D02",
+      "Name": "Smithsonian",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.888022,
+      "Lon": -77.028232,
+      "Address": {
+        "Street": "1200 Independence Avenue SW",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20004"
+      },
+      "Type": "small",
+      "pos": { x: 1787, y: 1540},
+      "trains": []
+    },
     "L'Enfant Plaza": {
-    "Code": "D03",
-    "Name": "L'Enfant Plaza",
-    "StationTogether1": "F03",
-    "StationTogether2": "",
-    "LineCode1": "BL",
-    "LineCode2": "OR",
-    "LineCode3": "SV",
-    "LineCode4": null,
-    "Lat": 38.884775,
-    "Lon": -77.021964,
-    "Address": {
-    "Street": "600 Maryland Avenue SW",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20024"
-  },
-    "Type": "large",
-    "pos": { x: 2000, y: 1629},
-    "trains": []
-  },
+      "Code": "D03",
+      "Name": "L'Enfant Plaza",
+      "StationTogether1": "F03",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.884775,
+      "Lon": -77.021964,
+      "Address": {
+        "Street": "600 Maryland Avenue SW",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20024"
+      },
+      "Type": "large",
+      "pos": { x: 2000, y: 1629},
+      "trains": []
+    },
     "Federal Center SW": {
-    "Code": "D04",
-    "Name": "Federal Center SW",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "BL",
-    "LineCode2": "OR",
-    "LineCode3": "SV",
-    "LineCode4": null,
-    "Lat": 38.884958,
-    "Lon": -77.01586,
-    "Address": {
-    "Street": "401 3rd Street SW",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20024"
-  },
-    "Type": "small",
-    "pos": { x: 2126, y: 1629},
-    "trains": []
-  },
+      "Code": "D04",
+      "Name": "Federal Center SW",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.884958,
+      "Lon": -77.01586,
+      "Address": {
+        "Street": "401 3rd Street SW",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20024"
+      },
+      "Type": "small",
+      "pos": { x: 2126, y: 1629},
+      "trains": []
+    },
     "Capitol South": {
-    "Code": "D05",
-    "Name": "Capitol South",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "BL",
-    "LineCode2": "OR",
-    "LineCode3": "SV",
-    "LineCode4": null,
-    "Lat": 38.884968,
-    "Lon": -77.005137,
-    "Address": {
-    "Street": "355 First Street SE",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20003"
-  },
-    "Type": "small",
-    "pos": { x: 2234, y: 1629},
-    "trains": []
-  },
+      "Code": "D05",
+      "Name": "Capitol South",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.884968,
+      "Lon": -77.005137,
+      "Address": {
+        "Street": "355 First Street SE",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20003"
+      },
+      "Type": "small",
+      "pos": { x: 2234, y: 1629},
+      "trains": []
+    },
     "Eastern Market": {
-    "Code": "D06",
-    "Name": "Eastern Market",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "BL",
-    "LineCode2": "OR",
-    "LineCode3": "SV",
-    "LineCode4": null,
-    "Lat": 38.884124,
-    "Lon": -76.995334,
-    "Address": {
-    "Street": "701 Pennsylvania Avenue SE",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20003"
-  },
-    "Type": "small",
-    "pos": { x: 2335, y: 1610},
-    "trains": []
-  },
+      "Code": "D06",
+      "Name": "Eastern Market",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.884124,
+      "Lon": -76.995334,
+      "Address": {
+        "Street": "701 Pennsylvania Avenue SE",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20003"
+      },
+      "Type": "small",
+      "pos": { x: 2335, y: 1610},
+      "trains": []
+    },
     "Potomac Ave": {
-    "Code": "D07",
-    "Name": "Potomac Ave",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "BL",
-    "LineCode2": "OR",
-    "LineCode3": "SV",
-    "LineCode4": null,
-    "Lat": 38.880841,
-    "Lon": -76.985721,
-    "Address": {
-    "Street": "700 14th Street SE",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20003"
-  },
-    "Type": "small",
-    "pos": { x: 2392, y: 1552},
-    "trains": []
-  },
+      "Code": "D07",
+      "Name": "Potomac Ave",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.880841,
+      "Lon": -76.985721,
+      "Address": {
+        "Street": "700 14th Street SE",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20003"
+      },
+      "Type": "small",
+      "pos": { x: 2392, y: 1552},
+      "trains": []
+    },
     "Stadium-Armory": {
-    "Code": "D08",
-    "Name": "Stadium-Armory",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "BL",
-    "LineCode2": "OR",
-    "LineCode3": "SV",
-    "LineCode4": null,
-    "Lat": 38.88594,
-    "Lon": -76.977485,
-    "Address": {
-    "Street": "192 19th St. SE",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20003"
-  },
-    "Type": "large",
-    "pos": { x: 2511, y: 1526},
-    "trains": []
-  },
+      "Code": "D08",
+      "Name": "Stadium-Armory",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "BL",
+      "LineCode2": "OR",
+      "LineCode3": "SV",
+      "LineCode4": null,
+      "Lat": 38.88594,
+      "Lon": -76.977485,
+      "Address": {
+        "Street": "192 19th St. SE",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20003"
+      },
+      "Type": "large",
+      "pos": { x: 2511, y: 1526},
+      "trains": []
+    },
     "Minnesota Ave": {
-    "Code": "D09",
-    "Name": "Minnesota Ave",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "OR",
-    "LineCode2": null,
-    "LineCode3": null,
-    "LineCode4": null,
-    "Lat": 38.898284,
-    "Lon": -76.948042,
-    "Address": {
-    "Street": "4000 Minnesota Avenue NE",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20019"
-  },
-    "Type": "small",
-    "pos": { x: 2707, y: 1449},
-    "trains": []
-  },
+      "Code": "D09",
+      "Name": "Minnesota Ave",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.898284,
+      "Lon": -76.948042,
+      "Address": {
+        "Street": "4000 Minnesota Avenue NE",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20019"
+      },
+      "Type": "small",
+      "pos": { x: 2707, y: 1449},
+      "trains": []
+    },
     "Deanwood": {
-    "Code": "D10",
-    "Name": "Deanwood",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "OR",
-    "LineCode2": null,
-    "LineCode3": null,
-    "LineCode4": null,
-    "Lat": 38.907734,
-    "Lon": -76.936177,
-    "Address": {
-    "Street": "4720 Minnesota Avenue NE",
-      "City": "Washington",
-      "State": "DC",
-      "Zip": "20019"
-  },
-    "Type": "small",
-    "pos": { x: 2772, y: 1386},
-    "trains": []
-  },
+      "Code": "D10",
+      "Name": "Deanwood",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.907734,
+      "Lon": -76.936177,
+      "Address": {
+        "Street": "4720 Minnesota Avenue NE",
+        "City": "Washington",
+        "State": "DC",
+        "Zip": "20019"
+      },
+      "Type": "small",
+      "pos": { x: 2772, y: 1386},
+      "trains": []
+    },
     "Cheverly": {
-    "Code": "D11",
-    "Name": "Cheverly",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "OR",
-    "LineCode2": null,
-    "LineCode3": null,
-    "LineCode4": null,
-    "Lat": 38.91652,
-    "Lon": -76.915427,
-    "Address": {
-    "Street": "5501 Columbia Park",
-      "City": "Cheverly",
-      "State": "MD",
-      "Zip": "20785"
-  },
-    "Type": "small",
-    "pos": { x: 2835, y: 1321},
-    "trains": []
-  },
+      "Code": "D11",
+      "Name": "Cheverly",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.91652,
+      "Lon": -76.915427,
+      "Address": {
+        "Street": "5501 Columbia Park",
+        "City": "Cheverly",
+        "State": "MD",
+        "Zip": "20785"
+      },
+      "Type": "small",
+      "pos": { x: 2835, y: 1321},
+      "trains": []
+    },
     "Landover": {
-    "Code": "D12",
-    "Name": "Landover",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "OR",
-    "LineCode2": null,
-    "LineCode3": null,
-    "LineCode4": null,
-    "Lat": 38.934411,
-    "Lon": -76.890988,
-    "Address": {
-    "Street": "3000 Pennsy Drive",
-      "City": "Hyattsville",
-      "State": "MD",
-      "Zip": "20785"
-  },
-    "Type": "small",
-    "pos": { x: 2899, y: 1257 },
-    "trains": []
-  },
+      "Code": "D12",
+      "Name": "Landover",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.934411,
+      "Lon": -76.890988,
+      "Address": {
+        "Street": "3000 Pennsy Drive",
+        "City": "Hyattsville",
+        "State": "MD",
+        "Zip": "20785"
+      },
+      "Type": "small",
+      "pos": { x: 2899, y: 1257 },
+      "trains": []
+    },
     "New Carrollton": {
-    "Code": "D13",
-    "Name": "New Carrollton",
-    "StationTogether1": "",
-    "StationTogether2": "",
-    "LineCode1": "OR",
-    "LineCode2": null,
-    "LineCode3": null,
-    "LineCode4": null,
-    "Lat": 38.947674,
-    "Lon": -76.872144,
-    "Address": {
-    "Street": "4700 Garden City Drive",
-      "City": "New Carrollton",
-      "State": "MD",
-      "Zip": "20784"
-  },
-    "Type": "small",
-    "pos": { x: 2964, y: 1193},
-    "trains": []
-  },
+      "Code": "D13",
+      "Name": "New Carrollton",
+      "StationTogether1": "",
+      "StationTogether2": "",
+      "LineCode1": "OR",
+      "LineCode2": null,
+      "LineCode3": null,
+      "LineCode4": null,
+      "Lat": 38.947674,
+      "Lon": -76.872144,
+      "Address": {
+        "Street": "4700 Garden City Drive",
+        "City": "New Carrollton",
+        "State": "MD",
+        "Zip": "20784"
+      },
+      "Type": "small",
+      "pos": { x: 2964, y: 1193},
+      "trains": []
+    }
   };
 
   map.resizeMap = function() {
@@ -767,29 +767,175 @@ var MapManager = function() {
       {
         type: "station",
         name: "Vienna/Fairfax-GMU",
-        pos: { x: 419, y: 1442},
-        timeToNext: 20000
+        pos: { x: [419], y: [1442]},
+        timeToNext: 1000
       },
       {
         type: "station",
         name: "Dunn Loring-Merrifield",
-        pos: { x: 522, y: 1442},
-        timeToNext: 20000
+        pos: { x: [522], y: [1442]},
+        timeToNext: 1000
       },
       {
         type: "station",
         name: "West Falls Church-VT/UVA",
-        pos: { x: 624, y: 1442},
-        timeToNext: 20000
+        pos: { x: [624], y: [1442]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "East Falls Church",
+        pos: { x: [759], y: [1442]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Ballston-MU",
+        pos: { x: [859], y: [1442] },
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Virginia Square-GMU",
+        pos: { x:[934], y: [1442] },
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Clarendon",
+        pos: { x:[1011], y: [1442] },
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Court House",
+        pos: { x:[1087], y: [1442] },
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Rosslyn",
+        pos: { x:[1150], y: [1442,1355]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Foggy Bottom-GWU",
+        pos: { x:[1150,1467], y: [1300,1205]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Farragut West",
+        pos: { x:[1551], y: [1205]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "McPherson Square",
+        pos: { x:[1702], y: [1205]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Metro Center",
+        pos: { x:[1787], y: [1349]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Federal Triangle",
+        pos: { x:[1787], y: [1458]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Smithsonian",
+        pos: { x:[1787], y: [1540]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "L'Enfant Plaza",
+        pos: { x:[2000], y: [1629]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Federal Center SW",
+        pos: { x:[2126], y: [1629]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Capitol South",
+        pos: { x:[2234], y: [1629]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Eastern Market",
+        pos: {x:[2335], y: [1610]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Potomac Ave",
+        pos: { x:[2392], y: [1552]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Stadium-Armory",
+        pos: { x:[2511], y: [1526]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Minnesota Ave",
+        pos: { x:[2707], y: [1449]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Deanwood",
+        pos: { x:[2772], y: [1386]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Cheverly",
+        pos: { x:[2835], y: [1321]},
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "Landover",
+        pos: { x:[2899], y: [1257] },
+        timeToNext: 1000
+      },
+      {
+        type: "station",
+        name: "New Carrollton",
+        pos: { x:[2964], y: [1193]},
+        timeToNext: 1000
       }
     ]
   };
 
   function createTween(train, line, position, direction) {
+    var xarr = [];
+    for(var i=0; i<lines[line][position+1].pos.x.length; i++) {
+      xarr.push(lines[line][position+1].pos.x[i] * (map.width/origMapSize.x));
+    }
+    var yarr = [];
+    for(var i=0; i<lines[line][position+1].pos.y.length; i++) {
+      yarr.push(lines[line][position+1].pos.y[i] * (map.width/origMapSize.x));
+    }
     new TWEEN.Tween(train)
       .to({
-        x: lines[line][position+1].pos.x * (map.width/origMapSize.x),
-        y: lines[line][position+1].pos.y * (map.height/origMapSize.y)
+        x: xarr,
+        y: yarr
       },lines[line][position].timeToNext)
       .onComplete(function() {
         if(lines[line][position+2]) {
@@ -822,15 +968,15 @@ var MapManager = function() {
 
     createTween(train, "orange", 0);
     /*
-    new TWEEN.Tween(train)
-      .to({
-        x: lines.orange[1].pos.x * (map.width/origMapSize.x),
-        y: lines.orange[1].pos.y * (map.height/origMapSize.y)
-      },lines.orange[0].timeToNext)
-      .onComplete(function() {
-        console.log('Completed loop');
-      })
-      .start();
+     new TWEEN.Tween(train)
+     .to({
+     x: lines.orange[1].pos.x * (map.width/origMapSize.x),
+     y: lines.orange[1].pos.y * (map.height/origMapSize.y)
+     },lines.orange[0].timeToNext)
+     .onComplete(function() {
+     console.log('Completed loop');
+     })
+     .start();
      */
     map.trainContainer.addChild(train);
   };
